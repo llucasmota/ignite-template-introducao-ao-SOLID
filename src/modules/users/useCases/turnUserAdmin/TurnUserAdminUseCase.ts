@@ -12,9 +12,10 @@ class TurnUserAdminUseCase {
     const user = this.usersRepository.findById(user_id);
     if (!user) {
       throw new Error("User not exists");
+    } else {
+      const userModified = this.usersRepository.turnAdmin(user);
+      return userModified;
     }
-    const userModified = this.usersRepository.turnAdmin(user);
-    return userModified;
   }
 }
 
